@@ -72,6 +72,13 @@ Known quirk: Claude Code doesn't reveal the effort level until the first model r
 
 </details>
 
+---
+
 <div align="center">
-<sub>MIT · made with an Opus that was <i>Deliberating…</i></sub>
+
+**If your spinner made you laugh, ⭐ star the repo** so your friends' Haikus can scratch their butts too.
+
+Made by [Charles Strauss](https://github.com/CharlesSS07) ([@charles07_s](https://x.com/charles07_s)), an ML researcher working on AI safety & interpretability.<br>
+<sub>MIT · built with an Opus that was <i>Deliberating…</i></sub>
+
 </div>
