@@ -24,12 +24,13 @@ describe('tierFor', () => {
 })
 
 describe('piles', () => {
-  test('hold the stock verbs once each, with no duplicates', async () => {
+  test('hold each verb once, every pile stocked', async () => {
     const all = Object.values(PILES).flat()
     expect(new Set(all).size).toBe(all.length)
-    for (const stock of ['Deliberating', 'Imagining', 'Vibing', 'Waddling', 'Enchanting']) {
-      expect(all).toContain(stock)
+    for (const pile of Object.values(PILES)) {
+      expect(pile.length).toBeGreaterThan(10)
     }
+    expect(PILES[0]).toContain('Scratching butt')
   })
 
   test('pickVerb is stable per seed and stays in its pile', async () => {

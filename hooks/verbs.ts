@@ -1,5 +1,5 @@
-// Spinner verbs sorted by brainpower. Every stock Claude Code verb lives in
-// exactly one pile; the rest are new.
+// Spinner verbs sorted by brainpower: the best of Claude Code's stock verbs,
+// each in the pile it deserves, plus a lot of worse (and better) ones.
 
 export type Tier = 0 | 1 | 2 | 3 | 4 | 5
 
@@ -15,16 +15,12 @@ export const TIER_NAMES = [
 export const PILES: Record<Tier, readonly string[]> = {
   // Haiku at low effort: the lights are on, nobody is home.
   0: [
-    // stock
-    'Befuddling', 'Bunning', 'Discombobulating', 'Flummoxing', 'Honking',
-    'Lollygagging', 'Waddling', 'Wibbling',
-    // new
-    'Umm', 'Ahhh', 'Oh right yup', 'Huh', 'Drooling', 'Eating paste',
-    'Licking the screen', 'Staring blankly', 'Forgetting the question',
-    'Counting on fingers', 'Sounding it out', 'Chewing crayons',
-    'Walking into a glass door', 'Mouth-breathing', 'Buffering',
-    'Asking mom', 'Losing the thread', 'Reading it upside down',
-    'Typing with mittens', 'Pressing all the buttons', 'Forgetting how to blink',
+    'Honking', 'Waddling', 'Discombobulating',
+    'Umm', 'Ahhh', 'Oh right yup', 'Drooling', 'Eating paste',
+    'Licking the screen', 'Forgetting the question', 'Counting on fingers',
+    'Chewing crayons', 'Walking into a glass door', 'Mouth-breathing',
+    'Asking mom', 'Reading it upside down', 'Typing with mittens',
+    'Pressing all the buttons', 'Forgetting how to blink',
     'Confidently hallucinating', 'Spelling "cat" with a K',
     'Nodding along', 'Thinking about lunch', 'Asking what a function is',
     'Reading the same line for the fourth time', 'Pressing Enter to see what happens',
@@ -32,78 +28,40 @@ export const PILES: Record<Tier, readonly string[]> = {
   ],
   // Haiku that's trying, or Sonnet phoning it in.
   1: [
-    // stock
-    'Dilly-dallying', 'Fiddle-faddling', 'Flibbertigibbeting', 'Frolicking',
-    'Gallivanting', 'Hullaballooing', 'Kerfuffling', 'Meandering', 'Moseying',
-    'Doodling', 'Noodling', 'Puttering', 'Scampering', 'Scurrying',
-    'Skedaddling', 'Slithering', 'Smooshing', 'Tomfoolering', 'Topsy-turvying',
-    'Wandering', 'Whatchamacalliting', 'Zigzagging', 'Canoodling',
-    // new
-    'Winging it', 'Guessing', 'Trying the other end',
-    'Copy-pasting from Stack Overflow', 'Adding console.logs everywhere',
-    'Ignoring the error', 'Hoping', 'Mashing tab', 'Turning it off and on',
-    'Commenting out the failing test', 'Doing my best',
+    'Dilly-dallying', 'Flibbertigibbeting', 'Tomfoolering', 'Whatchamacalliting',
+    'Winging it', 'Trying the other end', 'Copy-pasting from Stack Overflow',
+    'Adding console.logs everywhere', 'Ignoring the error', 'Hoping',
+    'Mashing tab', 'Turning it off and on', 'Commenting out the failing test',
   ],
   // Sonnet's natural habitat: fast, loose, dangerous.
   2: [
-    // stock
-    'Actioning', 'Baking', 'Beboppin\'', 'Blanching', 'Boogieing',
-    'Boondoggling', 'Booping', 'Bootstrapping', 'Brewing', 'Caramelizing',
-    'Churning', 'Combobulating', 'Cooking', 'Crunching', 'Doing', 'Drizzling',
-    'Finagling', 'Flambéing', 'Frosting', 'Garnishing', 'Gitifying',
-    'Grooving', 'Hashing', 'Herding', 'Hyperspacing', 'Jitterbugging',
-    'Julienning', 'Kneading', 'Leavening', 'Marinating', 'Moonwalking',
-    'Newspapering', 'Onioning', 'Pouncing', 'Proofing', 'Razzle-dazzling',
-    'Razzmatazzing', 'Recombobulating', 'Sautéing', 'Schlepping', 'Seasoning',
-    'Shenaniganing', 'Shimmying', 'Simmering', 'Sock-hopping', 'Spinning',
-    'Stewing', 'Swirling', 'Swooping', 'Tinkering', 'Twisting', 'Vibing',
-    'Whirring', 'Whisking', 'Working', 'Wrangling', 'Zesting',
-    // new
+    'Vibing', 'Moonwalking', 'Sock-hopping', 'Beboppin\'', 'Shenaniganing',
+    'Razzmatazzing', 'Boondoggling', 'Gitifying', 'Onioning',
     'Goofing around', 'Asking codex', 'sudo rm -rf / -ing', 'Shipping it',
-    'Force-pushing to main', 'Skipping the tests', 'Speedrunning',
-    'YOLO-ing', 'Monkey-patching', 'Duct-taping', 'Hotfixing prod',
-    '--no-verify-ing', 'Rebasing recklessly', 'Vibe coding',
+    'Force-pushing to main', 'Skipping the tests', 'YOLO-ing',
+    'Monkey-patching', 'Duct-taping', 'Hotfixing prod', '--no-verify-ing',
+    'Rebasing recklessly', 'Vibe coding',
   ],
   // Opus on a normal day, or Sonnet trying really hard.
   3: [
-    // stock
-    'Accomplishing', 'Architecting', 'Bloviating', 'Burrowing', 'Calculating',
-    'Catapulting', 'Cerebrating', 'Choreographing', 'Clauding', 'Cogitating',
-    'Composing', 'Computing', 'Concocting', 'Considering', 'Contemplating',
-    'Crafting', 'Creating', 'Cultivating', 'Deciphering', 'Deliberating',
-    'Determining', 'Effecting', 'Elucidating', 'Embellishing', 'Envisioning',
-    'Fermenting', 'Forging', 'Forming', 'Galloping', 'Generating',
-    'Germinating', 'Gesticulating', 'Harmonizing', 'Hatching', 'Ideating',
-    'Imagining', 'Improvising', 'Incubating', 'Inferring', 'Infusing',
-    'Mulling', 'Musing', 'Mustering', 'Nesting', 'Orchestrating',
-    'Perambulating', 'Percolating', 'Perusing', 'Philosophizing', 'Polishing',
-    'Pondering', 'Pontificating', 'Processing', 'Puzzling', 'Reticulating',
-    'Roosting', 'Ruminating', 'Sketching', 'Spelunking', 'Sprouting',
-    'Synthesizing', 'Tempering', 'Thinking', 'Thundering', 'Unfurling',
-    'Unraveling',
-    // new
+    'Architecting', 'Bloviating', 'Cerebrating', 'Choreographing', 'Clauding',
+    'Cogitating', 'Contemplating', 'Deciphering', 'Deliberating', 'Elucidating',
+    'Imagining', 'Mulling', 'Orchestrating', 'Perambulating', 'Philosophizing',
+    'Pondering', 'Pontificating', 'Reticulating', 'Ruminating',
     'Delegating', 'Weighing tradeoffs',
   ],
   // Opus at max, or Fable taking it easy.
   4: [
-    // stock
-    'Actualizing', 'Beaming', 'Billowing', 'Cascading', 'Channeling',
-    'Coalescing', 'Crystallizing', 'Ebbing', 'Flowing', 'Fluttering',
-    'Gusting', 'Ionizing', 'Levitating', 'Manifesting', 'Metamorphosing',
-    'Misting', 'Nebulizing', 'Nucleating', 'Orbiting', 'Osmosing',
-    'Photosynthesizing', 'Pollinating', 'Precipitating', 'Propagating',
-    'Quantumizing', 'Sublimating', 'Symbioting', 'Transfiguring',
-    'Transmogrifying', 'Transmuting', 'Undulating', 'Warping', 'Whirlpooling',
-    // new
+    'Channeling', 'Crystallizing', 'Levitating', 'Manifesting', 'Metamorphosing',
+    'Photosynthesizing', 'Quantumizing', 'Sublimating', 'Transfiguring',
+    'Transmogrifying', 'Transmuting',
     'Grokking', 'Steelmanning', 'Proving it formally', 'Holding the whole codebase in mind',
     'Anticipating your next question', 'Fixing the bug you haven\'t found yet',
     'Seeing the architecture', 'Deleting code gracefully',
   ],
   // Fable proper.
   5: [
-    // stock
     'Enchanting', 'Prestidigitating',
-    // new
     'Divining', 'Prophesying', 'Scrying', 'Communing with the weights',
     'Transcending', 'Beholding', 'Remembering the future', 'Folding spacetime',
     'Knowing', 'Seeing every branch at once', 'Unasking the question',

@@ -42,7 +42,7 @@ Your model sets the base tier, and your effort level (`/effort`) bumps it up or 
 | 🧙 | **Sage** | *Grokking… · Steelmanning… · Fixing the bug you haven't found yet…* |
 | 🔮 | **Oracular** | *Divining… · Scrying… · Communing with the weights… · Solving it before you asked…* |
 
-**270+ verbs.** Every one of Claude Code's built-in spinner verbs is in here, sorted into the pile it deserves. Sonnet got the cooking ones (*Sautéing*, *Julienning*) and the dance moves (*Moonwalking*, *Sock-hopping*). *Honking* and *Waddling* went exactly where you'd expect. On top of those, there are 80-odd new verbs that are much worse, or much better.
+**120+ verbs, zero filler.** We kept the best of Claude Code's built-in verbs and sorted each into the pile it deserves. Sonnet got the dance moves (*Moonwalking*, *Sock-hopping*), Opus got *Bloviating* and *Pontificating*, and *Honking* and *Waddling* went exactly where you'd expect. The rest are new, and they're much worse, or much better.
 
 ## Got a better one?
 
