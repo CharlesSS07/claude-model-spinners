@@ -4,5 +4,6 @@
   "description": "Spinner verbs that match how smart the current model + effort level is",
   "author": {
     "name": "Charles Strauss"
-  }
+  },
+  "repository": "https://github.com/CharlesSS07/claude-model-spinners"
 }
