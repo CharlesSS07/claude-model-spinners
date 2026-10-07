@@ -1,0 +1,8 @@
+{
+  "name": "model-spinners",
+  "version": "0.1.0",
+  "description": "Spinner verbs that match how smart the current model + effort level is",
+  "author": {
+    "name": "Charles Strauss"
+  }
+}

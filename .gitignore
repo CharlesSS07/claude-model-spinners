@@ -1,0 +1,4 @@
+.claude-plugin/types/
+*.swp
+.DS_Store
+node_modules/

@@ -1,0 +1,13 @@
+{
+  "name": "claude-model-spinners",
+  "description": "Claude Code spinner verbs that match your model's intelligence",
+  "owner": {
+    "name": "Charles Strauss"
+  },
+  "plugins": [
+    {
+      "name": "model-spinners",
+      "source": "./"
+    }
+  ]
+}
