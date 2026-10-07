@@ -1,76 +1,77 @@
-# claude-model-spinners
+<div align="center">
 
-**Your Claude Code spinner now tells you how smart your model is.**
+# 🧠 claude-model-spinners
 
-Running Haiku on low effort?
+**Claude Code's "thinking…" spinner now tells you how smart your model really is.**
 
-```
-✻ Eating paste…
-```
+<img src="assets/hero.svg" alt="Haiku on low effort: ✻ Scratching butt…" width="720">
 
-Opus on max?
+</div>
 
-```
-✻ Fixing the bug you haven't found yet…
-```
+## Install (10 seconds)
 
-Fable?
-
-```
-✻ Communing with the weights…
-```
-
-## Install
-
-In a Claude Code terminal session, run:
+Paste this into Claude Code:
 
 ```
 /plugin install model-spinners --marketplace CharlesSS07/claude-model-spinners
 ```
 
-Press `y` to add the marketplace, then pick a scope (user scope = every session). It turns on right away, no restart needed.
+Press **`y`**, then **Enter**. That's it. It works right away, in every session, no restart needed.
 
-## How smart is smart?
+## Same prompt, four brains
 
-Your model gets a base score, and your effort level nudges it up or down:
+<div align="center">
+<img src="assets/ladder.svg" alt="Haiku: Looking for the semicolon… / Sonnet: sudo rm -rf / -ing… / Opus: Weighing tradeoffs… / Fable: Remembering the future…" width="720">
+</div>
+
+Your model sets the base tier, and your effort level (`/effort`) bumps it up or down:
 
 | | low | medium | high | xhigh | max |
-|---|---|---|---|---|---|
-| **Haiku**  | 🫠 vegetative | 🫠 vegetative | 🫠 vegetative | 🤪 dim | 🤪 dim |
-| **Sonnet** | 🤪 dim | 🛹 scrappy | 🛹 scrappy | 🧐 thoughtful | 🧐 thoughtful |
-| **Opus**   | 🛹 scrappy | 🧐 thoughtful | 🧐 thoughtful | 🧙 sage | 🧙 sage |
-| **Fable**  | 🧙 sage | 🔮 oracular | 🔮 oracular | 🔮 oracular | 🔮 oracular |
+|---|:-:|:-:|:-:|:-:|:-:|
+| **Haiku**  | 🫠 | 🫠 | 🫠 | 🤪 | 🤪 |
+| **Sonnet** | 🤪 | 🛹 | 🛹 | 🧐 | 🧐 |
+| **Opus**   | 🛹 | 🧐 | 🧐 | 🧙 | 🧙 |
+| **Fable**  | 🧙 | 🔮 | 🔮 | 🔮 | 🔮 |
 
-Each tier has its own pile of verbs:
+| | Tier | What you'll see |
+|:-:|---|---|
+| 🫠 | **Vegetative** | *Umm… · Eating paste… · Licking the screen… · Reading the same line for the fourth time… · Spelling "cat" with a K…* |
+| 🤪 | **Dim** | *Winging it… · Copy-pasting from Stack Overflow… · Commenting out the failing test… · Hoping…* |
+| 🛹 | **Scrappy** | *Goofing around… · Asking codex… · Force-pushing to main… · --no-verify-ing… · Hotfixing prod…* |
+| 🧐 | **Thoughtful** | *Deliberating… · Delegating… · Writing the test first… · Naming things well…* |
+| 🧙 | **Sage** | *Grokking… · Steelmanning… · Fixing the bug you haven't found yet…* |
+| 🔮 | **Oracular** | *Divining… · Scrying… · Communing with the weights… · Solving it before you asked…* |
 
-| Tier | Sounds like |
-|---|---|
-| 🫠 **vegetative** | Umm · Ahhh · Oh right yup · Licking the screen · Spelling "cat" with a K · Confidently hallucinating |
-| 🤪 **dim** | Winging it · Copy-pasting from Stack Overflow · Commenting out the failing test · Dilly-dallying |
-| 🛹 **scrappy** | Goofing around · Asking codex · sudo rm -rf / -ing · Force-pushing to main · --no-verify-ing |
-| 🧐 **thoughtful** | Deliberating · Delegating · Weighing tradeoffs · Writing the test first · Ruminating |
-| 🧙 **sage** | Grokking · Steelmanning · Holding the whole codebase in mind · Transmogrifying |
-| 🔮 **oracular** | Divining · Scrying · Remembering the future · Solving it before you asked |
+**270+ verbs.** Every one of Claude Code's built-in spinner verbs is in here, sorted into the pile it deserves. Sonnet got the cooking ones (*Sautéing*, *Julienning*) and the dance moves (*Moonwalking*, *Sock-hopping*). *Honking* and *Waddling* went exactly where you'd expect. On top of those, there are 80-odd new verbs that are much worse, or much better.
 
-All 189 of Claude Code's stock spinner verbs are still in there, each sorted into the pile it deserves. The cooking ones (Sautéing, Julienning) and dance moves (Moonwalking, Sock-hopping) went to Sonnet. Honking and Waddling went where you'd expect. Then there are 80-odd new ones on top.
+## Got a better one?
 
-## Make it yours
+Every verb lives in one file: [`hooks/verbs.ts`](hooks/verbs.ts). Open a PR with your best ones and the funniest ones get merged.
 
-Every verb lives in [`hooks/verbs.ts`](hooks/verbs.ts). Add your own, fork it, and send a PR with your best ones.
+## Uninstall
 
-## Hacking on it
+```
+/plugin uninstall model-spinners
+```
+
+<details>
+<summary><b>How it works / hacking on it</b></summary>
+
+It's a Claude Code function-hooks plugin with two small hooks:
+
+- `turn.step` records which effort level your main session is using.
+- `ui.render` on the `Spinner` component swaps in a verb from your tier's pile. The pick is seeded by the word Claude Code chose, so it stays the same for a whole turn and changes on the next one.
 
 ```sh
 git clone https://github.com/CharlesSS07/claude-model-spinners
-claude --plugin-dir ./claude-model-spinners   # run Claude Code with your local copy
-claude plugin test ./claude-model-spinners    # run the tests
-claude plugin validate ./claude-model-spinners
+claude --plugin-dir ./claude-model-spinners    # try your local copy
+claude plugin test ./claude-model-spinners     # run the tests
 ```
 
-It's a Claude Code [function-hooks plugin](https://code.claude.com/docs). A `ui.render` hook rewrites the `Spinner` word. A `turn.step` hook records which effort level the main loop is using.
+Known quirk: Claude Code doesn't reveal the effort level until the first model request, so the very first spinner of a session assumes medium.
 
-Caveat: Claude Code doesn't expose the effort level until the first model request of a session, so the very first spinner assumes medium.
+</details>
 
-## License
-
-MIT
+<div align="center">
+<sub>MIT · made with an Opus that was <i>Deliberating…</i></sub>
+</div>

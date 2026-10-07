@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="330" viewBox="0 0 820 330" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="16">
+  <rect x="0.5" y="0.5" width="819" height="329" rx="12" fill="#1e1e1e" stroke="#3a3a3a"/>
+  <rect x="0.5" y="0.5" width="819" height="36" rx="12" fill="#2b2b2b"/>
+  <rect x="0.5" y="24" width="819" height="13" fill="#2b2b2b"/>
+  <circle cx="22" cy="18" r="6" fill="#ff5f57"/><circle cx="42" cy="18" r="6" fill="#febc2e"/><circle cx="62" cy="18" r="6" fill="#28c840"/>
+  <text x="410" y="23" fill="#9a9a9a" font-size="13" text-anchor="middle">same prompt, four brains</text>
+  <g>
+    <text x="28" y="85" fill="#7a7a7a" font-size="13">HAIKU · low</text>
+    <text x="210" y="85" fill="#d97757">✻ <tspan font-weight="bold">Looking for the semicolon…</tspan></text>
+    <text x="28" y="145" fill="#7a7a7a" font-size="13">SONNET · high</text>
+    <text x="210" y="145" fill="#d97757">✻ <tspan font-weight="bold">sudo rm -rf / -ing…</tspan></text>
+    <text x="28" y="205" fill="#7a7a7a" font-size="13">OPUS · high</text>
+    <text x="210" y="205" fill="#d97757">✻ <tspan font-weight="bold">Weighing tradeoffs…</tspan></text>
+    <text x="28" y="265" fill="#7a7a7a" font-size="13">FABLE · max</text>
+    <text x="210" y="265" fill="#d97757">✻ <tspan font-weight="bold">Remembering the future…</tspan></text>
+  </g>
+  <line x1="28" y1="110" x2="792" y2="110" stroke="#2f2f2f"/>
+  <line x1="28" y1="170" x2="792" y2="170" stroke="#2f2f2f"/>
+  <line x1="28" y1="230" x2="792" y2="230" stroke="#2f2f2f"/>
+  <text x="792" y="310" fill="#5a5a5a" font-size="12" text-anchor="end">intelligence ↓</text>
+</svg>
