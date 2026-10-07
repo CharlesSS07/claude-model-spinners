@@ -38,3 +38,66 @@ describe('piles', () => {
     expect(PILES[5]).toContain(pickVerb(5, 'Baking'))
   })
 })
+
+describe('bad input', () => {
+  test('a missing model falls back to sonnet instead of throwing', async () => {
+    expect(tierFor(undefined as unknown as string, 'high')).toBe(2)
+    expect(tierFor(null as unknown as string, 'max')).toBe(3)
+  })
+
+  test('prototype keys are not effort levels', async () => {
+    for (const effort of ['constructor', 'toString', '__proto__', 'hasOwnProperty']) {
+      expect(tierFor('claude-haiku-5-5', effort)).toBe(0)
+      expect(tierFor('claude-opus-5-5', effort)).toBe(3)
+    }
+    expect(PILES[0]).toContain(pickVerb(tierFor('claude-haiku-5-5', 'constructor'), 'x'))
+  })
+
+  test('pickVerb takes a missing seed', async () => {
+    expect(PILES[2]).toContain(pickVerb(2, undefined as unknown as string))
+    expect(pickVerb(2, undefined as unknown as string)).toBe(pickVerb(2, ''))
+  })
+
+  test('effort levels ignore case', async () => {
+    expect(tierFor('claude-opus-5-5', 'MAX')).toBe(4)
+    expect(tierFor('claude-fable-5-1', 'LOW')).toBe(4)
+    expect(tierFor('claude-sonnet-5-5', 'XHigh')).toBe(3)
+  })
+})
+
+describe('register', () => {
+  test('rewrites the Spinner word from the main loop\'s tier', async ($, on) => {
+    on('session.model', async () => ({ value: 'claude-sonnet-5-5' }))
+    let drawn: string | undefined
+    on('ui.render', { component: 'Spinner' }, async (_, e) => {
+      drawn = e.props.word
+      return { type: 'Text', children: [e.props.word] }
+    })
+    on('turn.step', async function* (_, e) {
+      return { turnId: e.turnId, index: e.index, answer: '', toolUses: [], stopReason: 'end_turn', usage: null }
+    })
+
+    const spin = async (word: string) => {
+      await $.ui.render({
+        surface: 'terminal', component: 'Spinner', requestId: 'main',
+        props: { word, message: null, suffix: '…', mode: 'thinking' },
+      })
+      return drawn
+    }
+    const step = async (effort: 'low' | 'max', agentId?: string) => {
+      const stream = $.turn.step({ turnId: 't', index: 0, model: 'claude-sonnet-5-5', effort, messageCount: 1, agentId })
+      for await (const _ of stream) {}
+      await stream.result
+    }
+
+    // Before any request the effort is unknown: Sonnet's medium.
+    expect(await spin('Sauteing')).toBe(pickVerb(2, 'Sauteing'))
+    await step('low')
+    expect(await spin('Sauteing')).toBe(pickVerb(1, 'Sauteing'))
+    // A subagent's effort leaves the main loop's alone.
+    await step('max', 'agent-1')
+    expect(await spin('Baking')).toBe(pickVerb(1, 'Baking'))
+    await step('max')
+    expect(await spin('Baking')).toBe(pickVerb(3, 'Baking'))
+  })
+})

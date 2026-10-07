@@ -76,7 +76,7 @@ const MODEL_BASE: Record<string, number> = { haiku: 0, sonnet: 2, opus: 3, fable
 const EFFORT_BUMP: Record<Effort, number> = { low: -1, medium: 0, high: 0, xhigh: 1, max: 1 }
 
 export function modelFamily(model: string): keyof typeof MODEL_BASE {
-  const m = model.toLowerCase()
+  const m = String(model ?? '').toLowerCase()
   for (const family of ['fable', 'opus', 'sonnet', 'haiku'] as const) {
     if (m.includes(family)) return family
   }
@@ -91,7 +91,8 @@ export function normalizeEffort(effort: string | number | undefined): Effort {
     if (effort < 32_000) return 'high'
     return 'max'
   }
-  return effort && effort in EFFORT_BUMP ? (effort as Effort) : 'medium'
+  const level = typeof effort === 'string' ? effort.toLowerCase() : ''
+  return Object.hasOwn(EFFORT_BUMP, level) ? (level as Effort) : 'medium'
 }
 
 export function tierFor(model: string, effort: string | number | undefined): Tier {
@@ -114,5 +115,5 @@ function hash(s: string): number {
  */
 export function pickVerb(tier: Tier, seed: string): string {
   const pile = PILES[tier]
-  return pile[hash(seed) % pile.length] ?? 'Thinking'
+  return pile[hash(String(seed ?? '')) % pile.length] ?? 'Thinking'
 }

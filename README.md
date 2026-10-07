@@ -68,6 +68,8 @@ claude --plugin-dir ./claude-model-spinners    # try your local copy
 claude plugin test ./claude-model-spinners     # run the tests
 ```
 
+Type-checking (`tsc -p .`) needs the API types Claude Code writes into the gitignored `.claude-plugin/types/` whenever it loads the plugin from a folder, which `claude plugin validate` and `claude plugin test` don't do. In a fresh clone, load it once first, for example with `claude --plugin-dir . -p "ok"`.
+
 Known quirk: Claude Code doesn't reveal the effort level until the first model request, so the very first spinner of a session assumes medium.
 
 </details>
