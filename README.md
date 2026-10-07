@@ -38,7 +38,7 @@ Your model sets the base tier, and your effort level (`/effort`) bumps it up or 
 | 🫠 | **Vegetative** | *Umm… · Eating paste… · Licking the screen… · Reading the same line for the fourth time… · Spelling "cat" with a K…* |
 | 🤪 | **Dim** | *Winging it… · Copy-pasting from Stack Overflow… · Commenting out the failing test… · Hoping…* |
 | 🛹 | **Scrappy** | *Goofing around… · Asking codex… · Force-pushing to main… · --no-verify-ing… · Hotfixing prod…* |
-| 🧐 | **Thoughtful** | *Deliberating… · Delegating… · Writing the test first… · Naming things well…* |
+| 🧐 | **Thoughtful** | *Deliberating… · Delegating… · Weighing tradeoffs… · Ruminating…* |
 | 🧙 | **Sage** | *Grokking… · Steelmanning… · Fixing the bug you haven't found yet…* |
 | 🔮 | **Oracular** | *Divining… · Scrying… · Communing with the weights… · Solving it before you asked…* |
 
